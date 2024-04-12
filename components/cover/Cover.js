@@ -3,7 +3,7 @@ import React from "react";
 
 const Cover = ({ children, background }) => {
   return (
-    <div className="h-screen bg-slate-800 relative min-h-[400px] flex justify-center items-center">
+    <div className="h-screen text-white bg-slate-800 relative min-h-[400px] flex justify-center items-center">
       <Image
         className="object-cover mix-blend-soft-light"
         alt="cover"
@@ -11,7 +11,7 @@ const Cover = ({ children, background }) => {
         fill
         sizes="100vw"
       />
-      {children}
+      <div className="max-w-5xl z-10">{children}</div>
     </div>
   );
 };
