@@ -1,8 +1,10 @@
-import Columns from "components/columns.js/Columns";
+import Column from "components/column/Column";
+import Columns from "components/columns/Columns";
 import Cover from "components/cover/Cover";
 import CallToAction from "components/cta/CallToAction";
 import Heading from "components/heading/Heading";
 import Paragraph from "components/paragraph/Paragraph";
+import Image from "next/image";
 import { theme } from "theme";
 
 export const BlockRenderer = ({ blocks }) => {
@@ -56,6 +58,24 @@ export const BlockRenderer = ({ blocks }) => {
           >
             <BlockRenderer blocks={block.innerBlocks} />
           </Columns>
+        );
+      }
+      case "core/column": {
+        return (
+          <Column key={block.id} width={block.attributes?.width}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </Column>
+        );
+      }
+      case "core/image": {
+        return (
+          <Image
+            key={block.id}
+            src={block.attributes?.url}
+            width={block.attributes.width}
+            height={block.attributes.height}
+            alt={block.attributes.alt || ""}
+          />
         );
       }
       default: {
