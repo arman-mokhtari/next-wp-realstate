@@ -4,6 +4,7 @@ import Cover from "components/cover/Cover";
 import CallToAction from "components/cta/CallToAction";
 import Heading from "components/heading/Heading";
 import Paragraph from "components/paragraph/Paragraph";
+import Propertysearch from "components/propertysearch/Propertysearch";
 import Image from "next/image";
 import { theme } from "theme";
 
@@ -43,6 +44,9 @@ export const BlockRenderer = ({ blocks }) => {
             content={block.attributes.content}
           />
         );
+      }
+      case "acf/propertysearch":{
+        return <Propertysearch key={block.id} />
       }
       case "core/cover": {
         return (
