@@ -1,4 +1,4 @@
-import PropertyCard from "./PropertyCard/PropertyCard";
+import PropertyCard from "./propertyCard/PropertyCard";
 
 const Results = ({ properties }) => {
   return (

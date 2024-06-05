@@ -1,4 +1,4 @@
-import { BlockRenderer } from "components/BlockRenderer";
+import { BlockRenderer } from "components/blockRenderer";
 import { MainMenu } from "components/mainMenu";
 
 const Page = (props) => {
