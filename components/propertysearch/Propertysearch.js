@@ -30,8 +30,6 @@ const Propertysearch = () => {
     if (hasParking === "true") {
       filters.hasParking = true;
     }
-    console.log("filters: ", filters);
-
     const response = await fetch("/api/search", {
       method: "post",
       body: JSON.stringify({
@@ -41,7 +39,6 @@ const Propertysearch = () => {
     });
 
     const data = await response.json();
-    console.log("search data: ", data);
     setproperties(data.properties);
     settotalResults(data.total);
   };
