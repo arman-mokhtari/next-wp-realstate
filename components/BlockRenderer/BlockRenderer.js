@@ -2,6 +2,7 @@ import Column from "components/column/Column";
 import Columns from "components/columns/Columns";
 import Cover from "components/cover/Cover";
 import CallToAction from "components/cta/CallToAction";
+import FormspreeForm from "components/formspreeForm/FormspreeForm";
 import Heading from "components/heading/Heading";
 import Paragraph from "components/paragraph/Paragraph";
 import Propertysearch from "components/propertysearch/Propertysearch";
@@ -11,6 +12,14 @@ import { theme } from "theme";
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/formspreeform": {
+        return (
+          <FormspreeForm
+            key={block.id}
+            formId={block.attributes.data.form_id}
+          />
+        );
+      }
       case "acf/ctabutton": {
         return (
           <CallToAction
@@ -45,8 +54,8 @@ export const BlockRenderer = ({ blocks }) => {
           />
         );
       }
-      case "acf/propertysearch":{
-        return <Propertysearch key={block.id} />
+      case "acf/propertysearch": {
+        return <Propertysearch key={block.id} />;
       }
       case "core/cover": {
         return (
