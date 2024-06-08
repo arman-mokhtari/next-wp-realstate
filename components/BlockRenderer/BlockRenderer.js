@@ -8,12 +8,20 @@ import Heading from "components/heading/Heading";
 import Paragraph from "components/paragraph/Paragraph";
 import { PropertyFeatures } from "components/propertyFeatures/PropertyFeatures";
 import Propertysearch from "components/propertysearch/Propertysearch";
+import TickItem from "components/tickItem/TickItem";
 import Image from "next/image";
 import { theme } from "theme";
 
 export const BlockRenderer = ({ blocks }) => {
   return blocks.map((block) => {
     switch (block.name) {
+      case "acf/tickitem": {
+        return (
+          <TickItem key={block.id}>
+            <BlockRenderer blocks={block.innerBlocks} />
+          </TickItem>
+        );
+      }
       case "core/gallery": {
         return (
           <Gallery
