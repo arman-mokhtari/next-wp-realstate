@@ -12,11 +12,19 @@ export const getPageStaticProps = async (context) => {
           ... on Page {
             id
             blocks(postTemplate: false)
+            seo {
+              metaDesc
+              title
+            }
           }
           ... on Property {
             id
             title
             blocks(postTemplate: false)
+            seo {
+              metaDesc
+              title
+            }
           }
         }
         acfOptionsMainMenu {
@@ -57,6 +65,7 @@ export const getPageStaticProps = async (context) => {
   });
   return {
     props: {
+      seo: data.nodeByUri.seo,
       mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menu),
       callToActionLabel:
         data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
