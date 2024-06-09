@@ -21,14 +21,14 @@ const PropertyCard = ({ property }) => {
       className="border-2 border-slate-300 p-5 block bg-slate-100 hover:bg-slate-200"
       href={uri}
     >
-      <div>
+      <div className="flex w-full relative h-[200px]">
         <Image
-          width={300}
-          height={200}
-          className="object-cover w-[300px] h-[200px]"
+          fill
+          sizes="300px"
+          className="object-cover"
           src={featuredImage?.node?.sourceUrl}
           alt=""
-        />
+        /> 
       </div>
       <div className="mt-3 text-lg font-bold">
         £{numeral(price).format("0,0")}

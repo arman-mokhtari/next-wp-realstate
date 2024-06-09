@@ -8,6 +8,7 @@ const Cover = ({ children, background }) => {
         alt="cover"
         src={background}
         fill
+        priority
         sizes="100vw"
       />
       <div className="max-w-5xl z-10">{children}</div>

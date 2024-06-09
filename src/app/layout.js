@@ -2,6 +2,9 @@ import { Poppins, Aboreto } from "next/font/google";
 import "./globals.css";
 import { MainMenu } from "@/components/MainMenu";
 import { getMenu } from "@/utils/getMenu";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 const poppins = Poppins({
   subsets: ["latin"],
