@@ -1,12 +1,9 @@
-import { gql } from "@apollo/client";
-import client from "client";
+import React from "react";
 import { cleanAndTransformBlocks } from "./cleanAndTransformBlocks";
-import { mapMainMenuItems } from "./mapMainMenuItems";
 
-export const getPageStaticProps = async (context) => {
-  const uri = context.params?.slug ? `/${context.params.slug.join("/")}/` : "/";
-  const { data } = await client.query({
-    query: gql`
+export const getPage = async (uri) => {
+  const params = {
+    query: `
       query PageQuery($uri: String!) {
         nodeByUri(uri: $uri) {
           ... on Page {
@@ -62,17 +59,15 @@ export const getPageStaticProps = async (context) => {
     variables: {
       uri,
     },
-  });
-  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
-  return {
-    props: {
-      seo: data.nodeByUri.seo,
-      mainMenuItems: mapMainMenuItems(data.acfOptionsMainMenu.mainMenu.menu),
-      callToActionLabel:
-        data.acfOptionsMainMenu.mainMenu.callToActionButton.label,
-      callToActionDestination:
-        data.acfOptionsMainMenu.mainMenu.callToActionButton.destination.uri,
-      blocks,
-    },
   };
+  const response = await fetch(process.env.WP_GRAPHQL_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(params),
+  });
+  const { data } = await response.json();
+  const blocks = cleanAndTransformBlocks(data.nodeByUri.blocks);
+  return blocks;
 };

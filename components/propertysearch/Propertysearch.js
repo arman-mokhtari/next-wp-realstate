@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import Results from "./results/Results";
 import Pagination from "./pagination/Pagination";

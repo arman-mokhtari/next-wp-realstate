@@ -1,3 +1,4 @@
+"use client"
 import Input from "components/input/Input";
 import { useEffect, useState } from "react";
 import queryString from "query-string";
