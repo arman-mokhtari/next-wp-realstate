@@ -1,6 +1,7 @@
 import { BlockRenderer } from "components/blockRenderer";
 import React from "react";
 import { getPage } from "utils/getPage";
+import { getSeo } from "utils/getSeo";
 
 const page = async () => {
   const data = await getPage("/");
@@ -8,3 +9,11 @@ const page = async () => {
 };
 
 export default page;
+
+export async function generateMetadata() {
+  const seo = await getSeo("/");
+  return {
+    title: seo?.title || "",
+    description: seo?.metaDesc || "",
+  };
+}
